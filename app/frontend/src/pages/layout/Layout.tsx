@@ -10,7 +10,7 @@ const Layout = () => {
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer}>
                     <Link to="/" className={styles.headerTitleContainer}>
-                        <h3 className={styles.headerTitle}>GPT + Enterprise data | Sample</h3>
+                        <h3 className={styles.headerTitle}>Claropedia | Chatbot</h3>
                     </Link>
                     <nav>
                         <ul className={styles.headerNavList}>
@@ -24,7 +24,7 @@ const Layout = () => {
                                     Ask a question
                                 </NavLink>
                             </li>
-                            <li className={styles.headerNavLeftMargin}>
+                            /* <li className={styles.headerNavLeftMargin}>
                                 <a href="https://aka.ms/entgptsearch" target={"_blank"} title="Github repository link">
                                     <img
                                         src={github}
@@ -35,7 +35,7 @@ const Layout = () => {
                                         className={styles.githubLogo}
                                     />
                                 </a>
-                            </li>
+                            </li> */
                         </ul>
                     </nav>
                     <h4 className={styles.headerRightText}>Azure OpenAI + Cognitive Search</h4>

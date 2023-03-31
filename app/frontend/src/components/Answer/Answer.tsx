@@ -40,8 +40,8 @@ export const Answer = ({
                         <IconButton
                             style={{ color: "black" }}
                             iconProps={{ iconName: "Lightbulb" }}
-                            title="Show thought process"
-                            ariaLabel="Show thought process"
+                            title="Muestra el procesamiento"
+                            ariaLabel="Muestra el procesamiento"
                             onClick={() => onThoughtProcessClicked()}
                             disabled={!answer.thoughts}
                         />
@@ -49,7 +49,7 @@ export const Answer = ({
                             style={{ color: "black" }}
                             iconProps={{ iconName: "ClipboardList" }}
                             title="Mostrar contenido de apoyo"
-                            ariaLabel="Mostrar contenido de apoyo"
+                            ariaLabel="Mostrar contenido base"
                             onClick={() => onSupportingContentClicked()}
                             disabled={!answer.data_points.length}
                         />

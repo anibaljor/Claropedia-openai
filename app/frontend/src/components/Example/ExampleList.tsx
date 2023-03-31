@@ -12,8 +12,8 @@ const EXAMPLES: ExampleModel[] = [
         text: "Datos a tener en cuenta en la venta a corporativos sin CECOR?",
         value: "Datos a tener en cuenta en la venta a corporativos sin CECOR?"
     },
-    { text: "What happens in a performance review?", value: "What happens in a performance review?" },
-    { text: "What does a Product Manager do?", value: "What does a Product Manager do?" }
+    { text: "¿Cuánto es el tiempo de entrega por delivery en AMBA?", value: "¿Cuánto es el tiempo de entrega por delivery en AMBA?" },
+    { text: "Facturación de equipo a precio y/o forma de pago diferente a la acordada", value: "Facturación de equipo a precio y/o forma de pago diferente a la acordada" }
 ];
 
 interface Props {

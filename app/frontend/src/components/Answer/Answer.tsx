@@ -48,8 +48,8 @@ export const Answer = ({
                         <IconButton
                             style={{ color: "black" }}
                             iconProps={{ iconName: "ClipboardList" }}
-                            title="Show supporting content"
-                            ariaLabel="Show supporting content"
+                            title="Mostrar contenido de apoyo"
+                            ariaLabel="Mostrar contenido de apoyo"
                             onClick={() => onSupportingContentClicked()}
                             disabled={!answer.data_points.length}
                         />

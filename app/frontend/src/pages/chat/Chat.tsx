@@ -181,7 +181,7 @@ const Chat = () => {
                     <div className={styles.chatInput}>
                         <QuestionInput
                             clearOnSend
-                            placeholder="Type a new question (e.g. does my plan cover annual eye exams?)"
+                            placeholder="Escriba una nueva pregunta:)"
                             disabled={isLoading}
                             onSend={question => makeApiRequest(question)}
                         />
@@ -200,7 +200,7 @@ const Chat = () => {
                 )}
 
                 <Panel
-                    headerText="Configure answer generation"
+                    headerText="Configurar la generación de respuestas"
                     isOpen={isConfigPanelOpen}
                     isBlocking={false}
                     onDismiss={() => setIsConfigPanelOpen(false)}
@@ -211,7 +211,7 @@ const Chat = () => {
                     <TextField
                         className={styles.chatSettingsSeparator}
                         defaultValue={promptTemplate}
-                        label="Override prompt template"
+                        label="Anular la plantilla de solicitud"
                         multiline
                         autoAdjustHeight
                         onChange={onPromptTemplateChange}
@@ -219,7 +219,7 @@ const Chat = () => {
 
                     <SpinButton
                         className={styles.chatSettingsSeparator}
-                        label="Retrieve this many documents from search:"
+                        label="Recupere esta cantidad de documentos de la búsqueda:"
                         min={1}
                         max={50}
                         defaultValue={retrieveCount.toString()}
@@ -229,20 +229,20 @@ const Chat = () => {
                     <Checkbox
                         className={styles.chatSettingsSeparator}
                         checked={useSemanticRanker}
-                        label="Use semantic ranker for retrieval"
+                        label="Utilice el clasificador semántico para la recuperación"
                         onChange={onUseSemanticRankerChange}
                     />
                     <Checkbox
                         className={styles.chatSettingsSeparator}
                         checked={useSemanticCaptions}
-                        label="Use query-contextual summaries instead of whole documents"
+                        label="Use resúmenes contextuales de consulta en lugar de documentos completos"
                         onChange={onUseSemanticCaptionsChange}
                         disabled={!useSemanticRanker}
                     />
                     <Checkbox
                         className={styles.chatSettingsSeparator}
                         checked={useSuggestFollowupQuestions}
-                        label="Suggest follow-up questions"
+                        label="Sugiera preguntas de seguimiento"
                         onChange={onUseSuggestFollowupQuestionsChange}
                     />
                 </Panel>

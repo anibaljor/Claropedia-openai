@@ -225,7 +225,7 @@ const Chat = () => {
                         defaultValue={retrieveCount.toString()}
                         onChange={onRetrieveCountChange}
                     />
-                    <TextField className={styles.chatSettingsSeparator} label="Exclude category" onChange={onExcludeCategoryChanged} />
+                    <TextField className={styles.chatSettingsSeparator} label="Excluir categoría" onChange={onExcludeCategoryChanged} />
                     <Checkbox
                         className={styles.chatSettingsSeparator}
                         checked={useSemanticRanker}

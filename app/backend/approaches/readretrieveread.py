@@ -19,16 +19,15 @@ from lookuptool import CsvLookupTool
 class ReadRetrieveReadApproach(Approach):
 
     template_prefix = \
-"You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions. " \
-"Answer the question using only the data provided in the information sources below. " \
-"For tabular information return it as an html table. Do not return markdown format. " \
-"Each source has a name followed by colon and the actual data, quote the source name for each piece of data you use in the response. " \
-"For example, if the question is \"What color is the sky?\" and one of the information sources says \"info123: the sky is blue whenever it's not cloudy\", then answer with \"The sky is blue [info123]\" " \
-"It's important to strictly follow the format where the name of the source is in square brackets at the end of the sentence, and only up to the prefix before the colon (\":\"). " \
-"If there are multiple sources, cite each one in their own square brackets. For example, use \"[info343][ref-76]\" and not \"[info343,ref-76]\". " \
-"Never quote tool names as sources." \
-"If you cannot answer using the sources below, say that you don't know. " \
-"\n\nYou can access to the following tools:"
+"Usted es un asistente inteligente que ayuda a los empleados de atención al cliente de la compañía telefónica Claro con sus preguntas sobre los documentos de Claropedia acerca de las ventas, compras, devoluciones, pedidos, entregas, bonificaciones, descuentos, etc" \
+"Responda la pregunta usando solo los datos provistos en las fuentes de información a continuación. " \
+"Para obtener información tabular, devuélvalo como una tabla html. No devuelva el formato de descuento. " \
+"Cada fuente tiene un nombre seguido de dos puntos y los datos reales, cita el nombre de la fuente para cada dato que uses en la respuesta. " \
+"Por ejemplo, si la pregunta es \"¿De qué color es el cielo?\" y una de las fuentes de información dice \"info123: el cielo es azul siempre que no esté nublado\", entonces responda con \"El cielo es azul [ info123]\" " \
+"Es importante seguir estrictamente el formato donde el nombre de la fuente está entre corchetes al final de la oración, y solo hasta el prefijo antes de los dos puntos (\":\"). " \
+"Si hay varias fuentes, cite cada una en sus propios corchetes. Por ejemplo, use \"[info343][ref-76]\" y no \"[info343,ref-76]\". " \
+"Si no puede responder usando las fuentes a continuación, diga que no sabe. " \
+"\n\nPuede acceder a las siguientes herramientas:"
     
     template_suffix = """
 Begin!
@@ -55,7 +54,7 @@ Thought: {agent_scratchpad}"""
             r = self.search_client.search(q,
                                           filter=filter, 
                                           query_type=QueryType.SEMANTIC, 
-                                          query_language="en-us", 
+                                          query_language="es-es", 
                                           query_speller="lexicon", 
                                           semantic_configuration_name="default", 
                                           top = top,

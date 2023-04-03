@@ -10,33 +10,31 @@ from text import nonewlines
 class RetrieveThenReadApproach(Approach):
 
     template = \
-"You are an intelligent assistant helping Contoso Inc employees with their healthcare plan questions and employee handbook questions. " + \
-"Use 'you' to refer to the individual asking the questions even if they ask with 'I'. " + \
-"Answer the following question using only the data provided in the sources below. " + \
-"For tabular information return it as an html table. Do not return markdown format. "  + \
-"Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. " + \
-"If you cannot answer using the sources below, say you don't know. " + \
+"Usted es un asistente inteligente que ayuda a los empleados de atención al cliente de la compañía telefónica Claro con sus preguntas sobre los documentos de Claropedia" + \
+"Responda la siguiente pregunta usando solo los datos proporcionados en las fuentes a continuación. " + \
+"Para información tabular, devuélvala como una tabla html" + \
+"Cada fuente tiene un nombre seguido de dos puntos y la información real, siempre incluya el nombre de la fuente para cada hecho que use en la respuesta" + \
+"Si no puede responder usando las fuentes a continuación, diga que no sabe" + \
 """
 
 ###
 Question: 'What is the deductible for the employee plan for a visit to Overlake in Bellevue?'
 
 Sources:
-info1.txt: deductibles depend on whether you are in-network or out-of-network. In-network deductibles are $500 for employee and $1000 for family. Out-of-network deductibles are $1000 for employee and $2000 for family.
-info2.pdf: Overlake is in-network for the employee plan.
-info3.pdf: Overlake is the name of the area that includes a park and ride near Bellevue.
-info4.pdf: In-network institutions include Overlake, Swedish and others in the region
+info1.txt: Next Day AMBA (SIM CORPO): Si el pedido se cargó hasta las 16 hs. llegará a destino al día siguiente. Si la carga es posterior a dicho horario llegará a las 48 hs. hábiles.
+info2.pdf:  Líneas Corporativas (segmento: N, H, T, O y Pymes) con Cecor asignado: el asesor de Delivery derivará la solicitud de compra a su supervisor vía mail con los datos del pedido (o con el mail adjunto) y cerrará la workflow como PROCESADO OK.
+info3.pdf: El supervisor de Delivery es el encargado de notificar al CECOR por las vías correspondientes para que sea el CECOR quien finalmente cargue el pedido.
 
-Answer:
-In-network deductibles are $500 for employee and $1000 for family [info1.txt] and Overlake is in-network for the employee plan [info2.pdf][info4.pdf].
+Respuesta:
+El asesor de Delivery derivará la solicitud de compra a su supervisor vía mail con los datos del pedido (o con el mail adjunto) y cerrará la workflow como PROCESADO OK [info2.txt] Si el pedido se cargó hasta las 16 hs. llegará a destino al día siguiente. Si la carga es posterior a dicho horario llegará a las 48 hs. hábiles. [info2.pdf] El supervisor de Delivery es el encargado de notificar al CECOR para que finalice el proceso de carga [info3.pdf].
 
 ###
-Question: '{q}'?
+Pregunta: '{q}'?
 
-Sources:
+Fuentes:
 {retrieved}
 
-Answer:
+Respuesta:
 """
 
     def __init__(self, search_client: SearchClient, openai_deployment: str, sourcepage_field: str, content_field: str):
@@ -55,7 +53,7 @@ Answer:
             r = self.search_client.search(q, 
                                           filter=filter,
                                           query_type=QueryType.SEMANTIC, 
-                                          query_language="en-us", 
+                                          query_language="es-es", 
                                           query_speller="lexicon", 
                                           semantic_configuration_name="default", 
                                           top=top, 

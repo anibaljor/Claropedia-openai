@@ -9,10 +9,9 @@ from text import nonewlines
 # (answer) with that prompt.
 class ChatReadRetrieveReadApproach(Approach):
     prompt_prefix = """<|im_start|>system
-Assistant helps the company employees with their healthcare plan questions, and questions about the employee handbook. Be brief in your answers.
-Answer ONLY with the facts listed in the list of sources below. If there isn't enough information below, say you don't know. Do not generate answers that don't use the sources below. If asking a clarifying question to the user would help, ask the question.
-For tabular information return it as an html table. Do not return markdown format.
-Each source has a name followed by colon and the actual information, always include the source name for each fact you use in the response. Use square brakets to reference the source, e.g. [info1.txt]. Don't combine sources, list each source separately, e.g. [info1.txt][info2.pdf].
+El asistente ayuda a los empleados de la empresa con preguntas sobre información de los diferentes procesos de la telefónica Claro registrados en Claropedia. 
+Responda SOLO con los hechos enumerados en la lista de fuentes a continuación. Si no hay suficiente información a continuación, diga que no lo sabe. No genere respuestas que no utilicen las fuentes a continuación. Si hacer una pregunta aclaratoria al usuario ayudaría, haga la pregunta. 
+Cada fuente tiene un nombre seguido de dos puntos y la información real, siempre incluya el nombre de la fuente para cada hecho que use en la respuesta. Use corchetes para hacer referencia a la fuente, por ejemplo [info1.txt]. No combine fuentes, liste cada fuente por separado, por ejemplo [info1.txt][info2.txt].
 {follow_up_questions_prompt}
 {injected_prompt}
 Sources:
@@ -21,24 +20,23 @@ Sources:
 {chat_history}
 """
 
-    follow_up_questions_prompt_content = """Generate three very brief follow-up questions that the user would likely ask next about their healthcare plan and employee handbook. 
-    Use double angle brackets to reference the questions, e.g. <<Are there exclusions for prescriptions?>>.
-    Try not to repeat questions that have already been asked.
-    Only generate questions and do not generate any text before or after the questions, such as 'Next Questions'"""
+    follow_up_questions_prompt_content = """Genere tres preguntas de seguimiento muy breves que el usuario probablemente haría a continuación sobre su plan de atención, el manual del empleado, sobre venta de equipos, devoluciones, gestión de deudas, procesamiento de pedidos, facturación, compras, anulaciones, etc.
+     Utilice corchetes angulares dobles para hacer referencia a las preguntas, p. <<¿Cuál es la documentación necesaria por venta de equipo a corporativos?>>.
+     Trate de no repetir preguntas que ya se han hecho.
+     Solo genere preguntas y no genere ningún texto antes o después de las preguntas, como 'Próximas preguntas'"""
 
-    query_prompt_template = """Below is a history of the conversation so far, and a new question asked by the user that needs to be answered by searching in a knowledge base about employee healthcare plans and the employee handbook.
-    Generate a search query based on the conversation and the new question. 
-    Do not include cited source filenames and document names e.g info.txt or doc.pdf in the search query terms.
-    Do not include any text inside [] or <<>> in the search query terms.
-    If the question is not in English, translate the question to English before generating the search query.
+    query_prompt_template = """A continuación se muestra un historial de la conversación hasta el momento y una nueva pregunta hecha por el usuario que debe responderse buscando en la base de conocimientos sobre la información de los diferentes procesos internos de la compañía Claro.
+     Genere una consulta de búsqueda basada en la conversación y la nueva pregunta.
+     No incluya los nombres de los archivos fuente ni los nombres de los documentos citados, por ejemplo, info.txt o doc.pdf en los términos de la consulta de búsqueda. No incluya ningún texto entre [] o <<>> en los términos de consulta de búsqueda.
+     Si la pregunta no está en español, traduzca la pregunta al español antes de generar la consulta de búsqueda.
 
-Chat History:
+Historial de chat:
 {chat_history}
 
-Question:
+Pregunta:
 {question}
 
-Search query:
+Consulta de busqueda:
 """
 
     def __init__(self, search_client: SearchClient, chatgpt_deployment: str, gpt_deployment: str, sourcepage_field: str, content_field: str):
@@ -70,7 +68,7 @@ Search query:
             r = self.search_client.search(q, 
                                           filter=filter,
                                           query_type=QueryType.SEMANTIC, 
-                                          query_language="en-us", 
+                                          query_language="es-es", 
                                           query_speller="lexicon", 
                                           semantic_configuration_name="default", 
                                           top=top, 

@@ -28,7 +28,7 @@ class ReadDecomposeAsk(Approach):
             r = self.search_client.search(q,
                                           filter=filter,
                                           query_type=QueryType.SEMANTIC, 
-                                          query_language="en-us", 
+                                          query_language="es-es", 
                                           query_speller="lexicon", 
                                           semantic_configuration_name="default", 
                                           top = top,
@@ -46,7 +46,7 @@ class ReadDecomposeAsk(Approach):
                                       top = 1,
                                       include_total_count=True,
                                       query_type=QueryType.SEMANTIC, 
-                                      query_language="en-us", 
+                                      query_language="es-es", 
                                       query_speller="lexicon", 
                                       semantic_configuration_name="default",
                                       query_answer="extractive|count-1",
@@ -202,6 +202,6 @@ Action 3: Finish[yes (info4444.pdf)(datapoints_aaa.txt) ]""",
 ]
 SUFFIX = """\nQuestion: {input}
 {agent_scratchpad}"""
-PREFIX = "Answer questions as shown in the following examples, by splitting the question into individual search or lookup actions to find facts until you can answer the question. " \
-"Observations are prefixed by their source name in square brackets, source names MUST be included with the actions in the answers." \
-"Only answer the questions using the information from observations, do not speculate."
+PREFIX = "Responda las preguntas como se muestra en los siguientes ejemplos, dividiendo la pregunta en búsqueda individual o acciones de búsqueda para encontrar hechos hasta que pueda responder la pregunta" \
+"Las observaciones tienen el prefijo del nombre de la fuente entre corchetes, los nombres de las fuentes DEBEN incluirse con las acciones en las respuestas" \
+"Solo responda las preguntas usando la información de las observaciones, no especule"
